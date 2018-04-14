@@ -1,9 +1,10 @@
 timeline-vue-component
 ==========================
 
-[![npm](https://img.shields.io/npm/dm/timeline-vue-component.svg)]() [![npm](https://img.shields.io/npm/v/timeline-vue-component.svg)]() [![Build Status](http://img.shields.io/travis/doge/wow.svg)](https://travis-ci.org/doge/wow)
+[![Travis](https://img.shields.io/travis/ybg555/timeline-vue-component.svg)](https://travis-ci.org/ybg555/timeline-vue-component) [![npm](https://img.shields.io/npm/dm/timeline-vue-component.svg)](https://www.npmjs.com/package/timeline-vue-component) [![npm](https://img.shields.io/npm/v/timeline-vue-component.svg)](https://www.npmjs.com/package/timeline-vue-component)
 
 时间轴组件
+
 ![](https://user-images.githubusercontent.com/6490371/38771016-1649e1b4-404e-11e8-9d8f-83e3c2c84fc6.png)
 
 ### Features
