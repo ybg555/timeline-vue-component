@@ -1,0 +1,16 @@
+---
+extends: egg
+parserOptions:
+  sourceType: module
+rules:
+  generator-star-spacing: off
+  babel/generator-star-spacing: off
+  comma-dangle: off
+  eol-last: off
+  no-else-return: off
+  array-bracket-spacing: off
+  newline-per-chained-call: off
+  no-debugger: off
+  valid-jsdoc: off
+  no-console: off
+  no-alert: off

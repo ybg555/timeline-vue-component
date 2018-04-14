@@ -1,0 +1,31 @@
+{
+  "name": "timeline-vue-component",
+  "version": "1.0.1",
+  "description": "timeline component for vue",
+  "main": "index.vue",
+  "keywords": [
+    "timeline",
+    "vue",
+    "component"
+  ],
+  "scripts": {
+    "test": "eslint ."
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^3.10.2",
+    "eslint-config-egg": "^3.2.0"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ybg555/timeline-vue-component"
+  },
+  "author": "yongbigang <bigang.ybg@alibaba-inc.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ybg555/timeline-vue-component/issues"
+  }
+}

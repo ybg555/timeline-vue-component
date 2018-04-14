@@ -1,0 +1,17 @@
+language: node_js
+
+node_js:
+  - "6"
+
+env:
+ - NODE_VERSION=6
+
+before_install:
+
+install:
+  - npm i
+
+before_script:
+
+script:
+  - npm test
