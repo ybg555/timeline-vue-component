@@ -3,7 +3,7 @@ export default {
   props: {
     timelineData: {
       type: Array,
-      default () {
+      default() {
         return [];
       }
     },
@@ -97,7 +97,7 @@ export default {
       this.next = this._hasNext();
     },
     // remote 分页
-    _remotePagination(index) {
+    _remotePagination() {
       this.$emit('fetch-remote', {
         current: this.current,
         size: this.pageSize
@@ -120,7 +120,7 @@ export default {
     onPagination(index) {
       if (this.next) {
         if (this.paginationType === 'remote') {
-          this._remotePagination(index);
+          this._remotePagination();
         } else {
           this._frontendPagination(index);
         }
