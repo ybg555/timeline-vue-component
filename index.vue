@@ -1,53 +1,56 @@
 <template>
-  <ul class="timeline-wrap" :style="{paddingLeft: spacing + 'px'}">
-    <li
-      v-for="(timeline, index) in list"
-      :key="index"
-      class="timeline-item"
-      :class="{'timeline-start': index === 0, 'timeline-end': index === (list.length - 1)}">
-      <span class="item-grouptitle"
-        :style="{
-          width: titleWidth + 'px',
-          left: -spacing + 'px'
-        }" v-if="timeline.groupTile">{{ timeline.groupTile }}</span>
-      <span class="item-title" :style="{width: titleWidth + 'px', left: -spacing + 'px'}">{{ timeline.title }}</span>
-      <div class="item-start"
-        :style="{
-          width: startCircleWidth + 'px',
-          height: startCircleWidth + 'px',
-          borderRadius: startCircleWidth + 'px',
-          top: -startCircleWidth + 'px',
-          left: -startCircleLeft + 'px',
-        }" v-if="index === 0">
-          <slot name="startCircle"></slot>
+  <div>
+    <ul class="timeline-wrap" :style="{paddingLeft: spacing + 'px'}" v-if="list.length > 0">
+      <li
+        v-for="(timeline, index) in list"
+        :key="'timeline-' + index"
+        class="timeline-item"
+        :class="{'timeline-start': index === 0, 'timeline-end': index === (list.length - 1)}">
+        <span class="item-grouptitle"
+          :style="{
+            width: titleWidth + 'px',
+            left: -spacing + 'px'
+          }" v-if="timeline.groupTile">{{ timeline.groupTile }}</span>
+        <span class="item-title" :style="{width: titleWidth + 'px', left: -spacing + 'px'}">{{ timeline.title }}</span>
+        <div class="item-start"
+          :style="{
+            width: startCircleWidth + 'px',
+            height: startCircleWidth + 'px',
+            borderRadius: startCircleWidth + 'px',
+            top: -startCircleWidth + 'px',
+            left: -startCircleLeft + 'px',
+          }" v-if="index === 0">
+            <slot name="startCircle"></slot>
+          </div>
+        <div :class="'item-circle item-circle-' + index + ' item-circle-' + (index % 2 === 0 ? 'even' : 'odd')"
+          :style="{
+            width: circleWidth + 'px',
+            height: circleWidth + 'px',
+            left: circleLeft + 'px'
+          }"></div>
+        <div
+          @click="onPagination(index)"
+          class="item-end"
+          :class="{'item-next': next}"
+          :style="{
+            width: startCircleWidth + 'px',
+            height: startCircleWidth + 'px',
+            borderRadius: startCircleWidth + 'px',
+            left: -startCircleLeft + 'px',
+            bottom: -startCircleWidth + 'px',
+          }" v-if="index === (list.length - 1)">
+            <slot name="endCircle"></slot>
         </div>
-      <div :class="'item-circle item-circle-' + index + ' item-circle-' + (index % 2 === 0 ? 'even' : 'odd')"
-        :style="{
-          width: circleWidth + 'px',
-          height: circleWidth + 'px',
-          left: circleLeft + 'px'
-        }"></div>
-      <div
-        @click="onPagination(index)"
-        class="item-end"
-        :class="{'item-next': timelineData.length > list.length}"
-        :style="{
-          width: startCircleWidth + 'px',
-          height: startCircleWidth + 'px',
-          borderRadius: startCircleWidth + 'px',
-          left: -startCircleLeft + 'px',
-          bottom: -startCircleWidth + 'px',
-        }" v-if="index === (list.length - 1)">
-          <slot name="endCircle"></slot>
+        <div>
+          <div class="timeline-content">
+            <slot name="list" :data="timeline"></slot>
+          </div>
         </div>
-      <div>
-        <div class="timeline-content">
-          <slot name="list" :data="timeline.content"></slot>
-        </div>
-      </div>
-    </li>
-    <li class="timeline-vertical-bar" :style="{left: verticalBarLeft + 'px'}"></li>
-  </ul>
+      </li>
+      <li class="timeline-vertical-bar" :style="{left: verticalBarLeft + 'px'}"></li>
+    </ul>
+    <p class="timeline-empty" v-else>数据为空</p>
+  </div>
 </template>
 
 <script>
@@ -150,5 +153,10 @@ export default vm;
   .timeline-content {
     color: #324057;
   }
+}
+.timeline-empty {
+  text-align: center;
+  line-height: 100px;
+  color: #8492A6;
 }
 </style>

@@ -12,6 +12,7 @@ timeline-vue-component
 ---
 
 * 支持懒加载和分页
+* 数据来源支持前端纯静态、异步接口获取
 * slot 定制内容显示
 * 支持布局和样式定制
 
@@ -36,7 +37,10 @@ Vue.component('timeline', Timeline);
 ```
 
 ```html
+<!--数据来源为前端静态数据-->
+
 <timeline
+  paginationType="frontend"
   :timelineData="data"
   :pageSize="10"
   :spacing="180">
@@ -55,14 +59,39 @@ Vue.component('timeline', Timeline);
 </timeline>
 ```
 
-时间轴数据(demo)
+```html
+<!--数据来源为异步接口数据-->
+<!--组件内点下一步触发事件，onFetchRemoteData回调函数第一个参数 page => {current,size}，同步父组件分页值-->
+
+<timeline
+  paginationType="remote"
+  :timelineData="data"
+  :pageSize="10"
+  @fetch-remote="onFetchRemoteData"
+  :spacing="180">
+  <!--开始图标内定制符号，选传-->
+  <template slot="startCircle">
+    <i class="el-icon-arrow-up"></i>
+  </template>
+  <!--结尾图标内定制符号，选传-->
+  <template slot="endCircle">
+    <i class="el-icon-arrow-down"></i>
+  </template>
+  <!--内容按需定制布局和数据排版，必传-->
+  <template slot="list" scope="scope">
+    {{ scope.data }}
+  </template>
+</timeline>
+```
+
+时间轴数据格式
 ```js
 // :timelineData="data"
 data: [
-  {
+  { // 通过 scope 接收
     groupTile: '分组标题',
     title: '标题',
-    content: [ // 通过 scope 接收
+    content: [
       {
         field: '自定义内容',
       }
@@ -79,6 +108,7 @@ data: [
 
 参数名 | 类型 | 默认值 | 备注
 ------------ | ------------- | ------------ | ---------
+paginationType | String  | - | 数据来源类型 frontend、remote（必填）
 timelineData | Array  | - | 时间轴数据（必填）
 pageSize | Number  | - | 分页 （选填）
 spacing | Number  | - | 时间轴左边和右边的间距 （选填）
