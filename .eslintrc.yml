@@ -3,14 +3,15 @@ extends: egg
 parserOptions:
   sourceType: module
 rules:
-  generator-star-spacing: off
+  comma-dangle: [2, 'always-multiline']
   babel/generator-star-spacing: off
-  comma-dangle: off
-  eol-last: off
-  no-else-return: off
-  array-bracket-spacing: off
-  newline-per-chained-call: off
-  no-debugger: off
-  valid-jsdoc: off
-  no-console: off
-  no-alert: off
+  generator-star-spacing: off
+  space-before-function-paren: [2, 'always']
+  newline-per-chained-call: 2
+  array-bracket-spacing: 2
+  no-else-return: 2
+  valid-jsdoc: 2
+  eol-last: 2
+  no-debugger: 0
+  no-console: 0
+  no-alert: 0
