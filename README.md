@@ -3,28 +3,22 @@ timeline-vue-component
 
 [![Travis](https://img.shields.io/travis/ybg555/timeline-vue-component.svg)](https://travis-ci.org/ybg555/timeline-vue-component) [![npm](https://img.shields.io/npm/dm/timeline-vue-component.svg)](https://www.npmjs.com/package/timeline-vue-component) [![npm](https://img.shields.io/npm/v/timeline-vue-component.svg)](https://www.npmjs.com/package/timeline-vue-component)
 
-时间轴组件
+Timeline components
 
 ![](https://user-images.githubusercontent.com/6490371/38771016-1649e1b4-404e-11e8-9d8f-83e3c2c84fc6.png)
 
 ### Features
 
----
-
-* 支持懒加载和分页
-* 数据来源支持前端纯静态、异步接口获取
-* slot 定制内容显示
-* 支持布局和样式定制
-
+* Support for lazy loading and paging
+* Data sources support front-end pure static and asynchronous interface acquisition
+* Slot custom content display
+* Support layout and style customization
 
 ### Installation
 
----
-
-```shell
+```sh
 npm install timeline-vue-component --save
 ```
-
 
 ### Usages
 
@@ -37,22 +31,25 @@ Vue.component('timeline', Timeline);
 ```
 
 ```html
-<!--数据来源为前端静态数据-->
+<!--The data source is front-end static data-->
 
 <timeline
-  paginationType="frontend"
-  :timelineData="data"
-  :pageSize="10"
-  :spacing="180">
-  <!--开始图标内定制符号，选传-->
+  pagination-type="frontend"
+  :timeline-data="data"
+  :page-size="10"
+  :spacing="180"
+>
+  <!--Customize symbol in start icon, pass-->
   <template slot="startCircle">
     <i class="el-icon-arrow-up"></i>
   </template>
-  <!--结尾图标内定制符号，选传-->
+
+  <!--Customize symbo al in start icon, pass-->
   <template slot="endCircle">
     <i class="el-icon-arrow-down"></i>
   </template>
-  <!--内容按需定制布局和数据排版，必传-->
+
+  <!--Content on-demand custom layout and data layout, pass-->
   <template slot="list" scope="scope">
     {{ scope.data }}
   </template>
@@ -60,42 +57,46 @@ Vue.component('timeline', Timeline);
 ```
 
 ```html
-<!--数据来源为异步接口数据-->
-<!--组件内点下一步触发事件，onFetchRemoteData回调函数第一个参数 page => {current,size}，同步父组件分页值-->
+<!--The data source is asynchronous interface data-->
+<!--The next point in the component triggers the next event.-->
+<!--The first parameter of the `onFetchRemoteData` callback function is page => {current,size},
+which synchronizes the pagination value of the parent component.-->
 
 <timeline
-  paginationType="remote"
-  :timelineData="data"
-  :pageSize="10"
+  pagination-type="remote"
+  :timeline-data="data"
+  :page-size="10"
   @fetch-remote="onFetchRemoteData"
-  :spacing="180">
-  <!--开始图标内定制符号，选传-->
+  :spacing="180"
+>
+  <!--Customize symbol in start icon, pass-->
   <template slot="startCircle">
     <i class="el-icon-arrow-up"></i>
   </template>
-  <!--结尾图标内定制符号，选传-->
+  
+  <!--Customize symbo al in start icon, pass-->
   <template slot="endCircle">
     <i class="el-icon-arrow-down"></i>
   </template>
-  <!--内容按需定制布局和数据排版，必传-->
+  
+  <!--Content on-demand custom layout and data layout, pass-->
   <template slot="list" scope="scope">
     {{ scope.data }}
   </template>
 </timeline>
 ```
 
-时间轴数据格式
+Timeline data format
+
 ```js
-// :timelineData="data"
+// :timeline-data="data"
 data: [
-  { // 通过 scope 接收
-    groupTile: '分组标题',
-    title: '标题',
+  { // Received through scope
+    groupTile: 'Group header',
+    title: 'Title',
     content: [
-      {
-        field: '自定义内容',
-      }
-    ]
+      { field: '自定义内容' },
+    ],
   },
 ]
 ```
