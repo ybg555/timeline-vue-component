@@ -10,8 +10,8 @@
           :style="{
             width: titleWidth + 'px',
             left: -spacing + 'px'
-          }" v-if="timeline.groupTile">{{ timeline.groupTile }}</span>
-        <span class="item-title" :style="{width: titleWidth + 'px', left: -spacing + 'px'}">{{ timeline.title }}</span>
+          }" v-if="timeline.groupTile" :title="timeline.groupTile">{{ timeline.groupTile }}</span>
+        <span class="item-title" :style="{width: titleWidth + 'px', left: -spacing + 'px'}" :title="timeline.title">{{ timeline.title }}</span>
         <div class="item-start"
           :style="{
             width: startCircleWidth + 'px',
